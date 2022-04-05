@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
-import DatePicker from '@react-native-community/datetimepicker';
+import MyDatePicker from "./myDate";
+
 
 
 
@@ -12,7 +13,7 @@ const SignUpScreen = () => {
     const [matriculecnss, setMatriculecnss] = useState('');
     const [numpiecedient, setNumpiecedient] = useState('');
     const [selectedValue, setSelectedValue] = useState('CIN');
-    const [date, setDate] = useState('');
+
     const [email, setEmail] = useState('');
     const [numtel, setNumtel] = useState('');
 
@@ -62,17 +63,8 @@ const SignUpScreen = () => {
                 <Picker.Item label='Passport' value='Passport' />
                 <Picker.Item label='Carte séjour' value='Carte séjour' />
             </Picker>
-            <DatePicker
 
-                style={{ width: '100%' }}
-                date={date}
-                placeholder='select date'
-                format='DD-MM-YYYY'
-                confirmBtnText='Confirm'
-                cancelBtnText='Cancel'
-                onDateChange={(d) => setDate(d)}
-
-            />
+            <MyDatePicker />
 
             <CustomInput
                 placeholder="emaill"
@@ -117,6 +109,9 @@ const styles = StyleSheet.create({
         height: 50,
         width: 150
 
+    },
+    dtp: {
+        width: '100 %',
     },
     tpi: {
         fontWeight: '500',
